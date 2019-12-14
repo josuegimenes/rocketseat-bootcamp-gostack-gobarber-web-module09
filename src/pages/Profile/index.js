@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 
@@ -12,6 +12,11 @@ import { Container } from './styles';
 export default function Profile() {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
+  const [title] = useState('GoBarber | Meu Perfil');
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));

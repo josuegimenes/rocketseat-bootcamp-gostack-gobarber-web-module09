@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
@@ -21,6 +21,11 @@ const schema = Yup.object().shape({
 
 export default function SignUp() {
   const dispatch = useDispatch();
+  const [title] = useState('GoBarber | SignUp');
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 
   function handleSubmit({ name, email, password }) {
     dispatch(signUpRequest(name, email, password));

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
@@ -21,6 +21,11 @@ const schema = Yup.object().shape({
 export default function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading);
+  const [title] = useState('GoBarber | SignIn');
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 
   function handleSubmit({ email, password }) {
     dispatch(signInRequest(email, password));
