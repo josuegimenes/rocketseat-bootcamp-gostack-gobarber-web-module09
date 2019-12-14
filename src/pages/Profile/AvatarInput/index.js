@@ -21,7 +21,7 @@ export default function AvatarInput() {
       });
     }
     // eslint-disable-next-line
-  }, [ref.current]);
+  }, [ref]);
 
   async function handleChange(e) {
     const data = new FormData();
@@ -43,7 +43,7 @@ export default function AvatarInput() {
           src={
             preview || 'https://api.adorable.io/avatars/50/abott@adorable.png'
           }
-          alt=""
+          alt="Avatar"
         />
 
         <input

@@ -11,6 +11,7 @@ import AvatarInput from './AvatarInput';
 import { Container } from './styles';
 
 const schema = Yup.object().shape({
+  avatar_id: Yup.string(),
   name: Yup.string().required('O nome é obrigatório'),
   email: Yup.string()
     .email('Insira um e-mail válido')
