@@ -7,12 +7,13 @@ import {
   setMinutes,
   setSeconds,
   isBefore,
-  isEqual,
   parseISO,
 } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import pt from 'date-fns/locale/pt';
+
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+
 import api from '~/services/api';
 
 import { Container, Time } from './styles';
@@ -50,8 +51,8 @@ export default function Dashboard() {
         return {
           time: `${hour}:00h`,
           past: isBefore(compareDate, new Date()),
-          appointment: response.data.find(a =>
-            isEqual(parseISO(a.date), compareDate)
+          appointment: response.data.find(
+            a => parseISO(a.date).toString() === compareDate.toString()
           ),
         };
       });
@@ -74,7 +75,9 @@ export default function Dashboard() {
         <button type="button" onClick={handlePrevDay}>
           <MdChevronLeft size={36} color="#fff" />
         </button>
+
         <strong>{dateFormatted}</strong>
+
         <button type="button" onClick={handleNextDay}>
           <MdChevronRight size={36} color="#fff" />
         </button>

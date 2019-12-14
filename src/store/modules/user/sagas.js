@@ -9,12 +9,12 @@ export function* updateProfile({ payload }) {
   try {
     const { name, email, avatar_id, ...rest } = payload.data;
 
-    const profile = {
-      name,
-      email,
-      avatar_id,
-      ...(rest.oldPassword ? rest : {}),
-    };
+    // Object.assign serve para unir objetos:
+    // eslint-disable-next-line prefer-object-spread
+    const profile = Object.assign(
+      { name, email, avatar_id },
+      rest.oldPassword ? rest : {}
+    );
 
     const response = yield call(api.put, 'users', profile);
 

@@ -20,7 +20,8 @@ export default function AvatarInput() {
         path: 'dataset.file',
       });
     }
-  }, [ref.current]); // eslint-disable-line
+    // eslint-disable-next-line
+  }, [ref.current]);
 
   async function handleChange(e) {
     const data = new FormData();
